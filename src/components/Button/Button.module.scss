@@ -1,0 +1,99 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: TikTokFont, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    min-width: 100px;
+    padding: 9px 16px;
+
+    color: var(--text-color);
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    cursor: pointer;
+    user-select: none;
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &.inline + .wrapper.inline {
+        margin-left: 6px;
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+.icon + .content,
+.content + .icon {
+    margin-left: 8px;
+}
+
+// *********************** //
+// css for different shapes //
+
+.rounded {
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+// *********************** //
+// css for different types //
+
+.primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+
+    &:hover {
+        background: linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06),
+                rgba(0, 0, 0, 0.06)
+            ),
+            var(--primary-color);
+    }
+}
+
+.outline {
+    color: var(--primary-color);
+    border-color: currentColor;
+
+    &:hover {
+        border-color: currentColor;
+    }
+}
+
+.basic {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// *********************** //
+// css for different sizes //
+
+.size-s {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.size-l {
+    min-width: 140px;
+    padding: 14px 16px;
+}
