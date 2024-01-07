@@ -16,6 +16,12 @@
     height: 100%;
 }
 
+.logo {
+    margin-left: 6px;
+}
+
+// **** Search.js starts **** //
+
 .search-bar {
     --search-height: 46px;
     --search-border-radius: 92px;
@@ -61,7 +67,8 @@
         }
     }
 
-    button,
+    .search-btn,
+    .clear-btn,
     .loading-icon {
         width: var(--search-btn-width);
         font-size: 1.8rem;
@@ -72,15 +79,19 @@
         position: absolute;
         right: var(--search-btn-width);
         top: 48%;
-        transform: translateY(-50%);
+        animation: spinner 1.2s linear infinite;
+    }
+
+    button.clear-btn {
+        cursor: pointer;
     }
 
     .search-btn {
         border-top-right-radius: var(--search-border-radius);
         border-bottom-right-radius: var(--search-border-radius);
+        cursor: pointer;
 
         &:hover {
-            cursor: pointer;
             background-color: rgba(22, 24, 35, 0.03);
         }
 
@@ -101,30 +112,58 @@
     }
 }
 
+// **** Search.js ends **** //
+
 .actions {
     display: flex;
-    height: 100%;
 
     .action-btn {
+        position: relative;
         color: #161823;
-        // font-size: 2.2rem;
         padding: 4px 12px;
         cursor: pointer;
     }
 
     .more-btn {
         font-size: 2rem;
-        padding: 8px 14px;
-        margin-left: 10px;
+        padding: 6px 14px;
+        margin-left: 12px;
     }
 
     .avatar {
         width: 3.2rem;
         height: 3.2rem;
-        margin: auto 0 auto 12px;
+        margin: auto 4px auto 12px;
         border-radius: 50%;
 
         object-fit: cover;
         cursor: pointer;
+    }
+
+    .inbox-count {
+        position: absolute;
+        top: 0;
+        right: 6px;
+
+        font-family: TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 2rem;
+
+        color: rgb(255, 255, 255);
+        background-color: rgb(254, 44, 85);
+
+        min-width: 2rem;
+        height: 2rem;
+        border-radius: 10px;
+    }
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
     }
 }
