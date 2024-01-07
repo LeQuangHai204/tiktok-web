@@ -1,0 +1,130 @@
+.wrapper {
+    width: 100%;
+    max-width: 1150px;
+    height: 60px;
+
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
+}
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-width: 800px;
+    max-width: 1150px;
+    height: 100%;
+}
+
+.search-bar {
+    --search-height: 46px;
+    --search-border-radius: 92px;
+    --search-btn-width: 52px;
+
+    display: flex;
+    position: relative;
+
+    width: 361px;
+    height: var(--search-height);
+
+    border-radius: var(--search-border-radius);
+    border: 1.5px solid transparent;
+
+    padding-left: 16px;
+    background-color: rgba(22, 24, 35, 0.06);
+
+    &::after {
+        content: "";
+
+        position: absolute;
+        top: 9px;
+        right: var(--search-btn-width);
+
+        width: 1px;
+        height: calc(var(--search-height) - 18px);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+
+    input {
+        flex: 1;
+        height: 100%;
+        background-color: transparent;
+        font-size: 1.6rem;
+        caret-color: red;
+
+        &:not(:placeholder-shown) ~ button {
+            color: rgba(22, 24, 35, 0.75);
+        }
+    }
+
+    button,
+    .loading-icon {
+        width: var(--search-btn-width);
+        font-size: 1.8rem;
+        color: rgba(22, 24, 35, 0.34);
+    }
+
+    .loading-icon {
+        position: absolute;
+        right: var(--search-btn-width);
+        top: 48%;
+        transform: translateY(-50%);
+    }
+
+    .search-btn {
+        border-top-right-radius: var(--search-border-radius);
+        border-bottom-right-radius: var(--search-border-radius);
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(22, 24, 35, 0.03);
+        }
+
+        &:active {
+            background-color: rgba(22, 24, 35, 0.06);
+        }
+    }
+}
+
+.search-result {
+    width: 361px;
+
+    .search-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: rgba(22, 24, 35, 0.5);
+        padding: 6px 12px;
+    }
+}
+
+.actions {
+    display: flex;
+    height: 100%;
+
+    .action-btn {
+        color: #161823;
+        // font-size: 2.2rem;
+        padding: 4px 12px;
+        cursor: pointer;
+    }
+
+    .more-btn {
+        font-size: 2rem;
+        padding: 8px 14px;
+        margin-left: 10px;
+    }
+
+    .avatar {
+        width: 3.2rem;
+        height: 3.2rem;
+        margin: auto 0 auto 12px;
+        border-radius: 50%;
+
+        object-fit: cover;
+        cursor: pointer;
+    }
+}
