@@ -1,4 +1,4 @@
-# reactjs-tiktok-frontend-clone
+# reactjs-csr-web
 
 Replicate TikTok website's frontend, leverages technologies like sass for styling, tippy for tooltipping and create react app for efficient bootstrapping. Learn to incorporate industry-best practices, structure components, manage state, and implement features.
 
