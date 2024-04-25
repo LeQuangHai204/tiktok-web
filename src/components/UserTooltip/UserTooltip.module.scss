@@ -1,0 +1,50 @@
+.wrapper {
+    border-radius: 5px;
+    background-color: var(--white-color);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 2px 12px;
+    padding: 16px;
+}
+
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 214px;
+    padding: 6px;
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .follow-btn {
+        margin: 14px 0;
+    }
+}
+
+.tooltip-data {
+    padding-top: 12px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    .fullname {
+        line-height: 1.8rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    .nickname {
+        font-size: 1.4rem;
+    }
+
+    .checked-icon {
+        margin-left: 6px;
+        color: rgb(32, 213, 236);
+    }
+
+    .stats + .stats {
+        margin-left: 20px;
+    }
+}

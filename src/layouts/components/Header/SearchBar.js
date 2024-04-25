@@ -12,7 +12,7 @@ import {
 import styles from './Header.module.scss';
 import { AccountItem, Poppers } from '~/components';
 import { useDebounce } from '~/hooks';
-import { fetchUser } from '~/services';
+import { fetchUsers } from '~/services';
 
 const cx = classNames.bind(styles);
 
@@ -32,9 +32,9 @@ export default function SearchBar() {
         }
 
         setIsLoading(true);
-        fetchUser({ params: { q: debouncedSearchInput, type: 'less' } })
+        fetchUsers({ q: 'ng hoa', type: 'less' })
             .then((response) => {
-                setSearchResult(response.data);
+                setSearchResult(response);
             })
             .catch((error) => {
                 console.error(error);
@@ -64,11 +64,8 @@ export default function SearchBar() {
                     >
                         <Poppers.Wrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
-                            {searchResult.map((result) => (
-                                <AccountItem
-                                    key={result.id}
-                                    userData={result}
-                                />
+                            {searchResult.map((result, index) => (
+                                <AccountItem key={index} userData={result} />
                             ))}
                         </Poppers.Wrapper>
                     </div>

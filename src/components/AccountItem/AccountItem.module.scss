@@ -19,6 +19,8 @@
     .realname {
         font-size: 1.4rem;
         font-weight: 510;
+        display: flex;
+        align-items: center;
     }
 
     .checked-icon {
@@ -29,9 +31,22 @@
     .username {
         font-size: 1.3rem;
         color: rgba(22, 24, 35, 0.5);
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 180px;
     }
 
     &:hover {
         background: rgba(22, 24, 35, 0.03);
     }
+}
+
+.fullname {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
 }

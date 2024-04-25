@@ -23,16 +23,16 @@ const AccountItem = ({
                 fallback={images.noImage}
             />
             <div className={cx('info')}>
-                <h4 className={cx('realname')}>
-                    <span>{fullName}</span>
+                <div className={cx('realname')}>
+                    <span className={cx('fullname')}>{fullName}</span>
                     {tick && (
                         <FontAwesomeIcon
                             className={cx('checked-icon')}
                             icon={faCheckCircle}
                         ></FontAwesomeIcon>
                     )}
-                </h4>
-                <span className={cx('username')}>{nickName}</span>
+                </div>
+                <div className={cx('username')}>{nickName}</div>
             </div>
         </Link>
     );

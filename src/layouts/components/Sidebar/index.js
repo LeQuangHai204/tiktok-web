@@ -10,7 +10,7 @@ export default function Sidebar() {
     return (
         <div className={cx('wrapper')}>
             <NavMenu />
-            <UserMenu label="Suggested for you" />
+            <UserMenu label="Suggested for you" preview />
             <UserMenu label="Following" />
         </div>
     );

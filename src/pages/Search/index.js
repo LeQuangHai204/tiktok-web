@@ -1,3 +1,9 @@
-export default function Search() {
-    return <h2>Search</h2>;
-}
+const Search = () => {
+    return (
+        <div>
+            <h1>Search</h1>
+        </div>
+    );
+};
+
+export default Search;
