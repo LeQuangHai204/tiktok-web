@@ -1,11 +1,11 @@
 .wrapper {
-    width: 234px;
+    width: 220px;
 }
 
 .inner {
     padding-bottom: 8px;
 
-    .item {
+    .menu-item {
         justify-content: flex-start;
         width: 100%;
         font-weight: 500;
@@ -39,5 +39,21 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+
+.menu-item {
+    justify-content: flex-start;
+    width: 100%;
+    font-weight: 500;
+    border-radius: 0;
+    padding: 12px 16px;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
     }
 }

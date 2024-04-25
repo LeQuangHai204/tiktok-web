@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
 
-    font-family: TikTokFont, sans-serif;
+    font-family: var(--tiktok-font);
     font-size: 1.6rem;
     font-weight: 700;
 
@@ -96,4 +96,14 @@
 .size-l {
     min-width: 140px;
     padding: 14px 16px;
+}
+
+// *********************** //
+// css for different states //
+.active {
+    color: red;
+
+    svg {
+        fill: red;
+    }
 }

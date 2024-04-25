@@ -1,4 +1,6 @@
-const UploadIcon = ({ width = "3.2rem", height = "3.2rem", className }) => (
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const UploadIcon = ({ width = '3.2rem', height = '3.2rem', className }) => (
     <svg
         className={className}
         width={width}
@@ -15,12 +17,11 @@ const UploadIcon = ({ width = "3.2rem", height = "3.2rem", className }) => (
     </svg>
 );
 
-const MessageIcon = ({ className, width = "2.6rem", height = "2.6rem" }) => (
+const MessageIcon = ({ className, width = '2.6rem', height = '2.6rem' }) => (
     <svg
         className={className}
         width={width}
         height={height}
-        data-e2e=" "
         viewBox="0 0 48 48"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,12 +34,11 @@ const MessageIcon = ({ className, width = "2.6rem", height = "2.6rem" }) => (
     </svg>
 );
 
-const InboxIcon = ({ className, width = "3.2rem", height = "3.2rem" }) => (
+const InboxIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => (
     <svg
         className={className}
         width={width}
         height={height}
-        data-e2e=""
         viewBox="0 0 32 32"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -51,4 +51,60 @@ const InboxIcon = ({ className, width = "3.2rem", height = "3.2rem" }) => (
     </svg>
 );
 
-export { MessageIcon, UploadIcon, InboxIcon };
+const HomeIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        /*fill="rgba(254, 44, 85, 1)"*/
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M24.9505 7.84001C24.3975 7.38666 23.6014 7.38666 23.0485 7.84003L6.94846 21.04C6.45839 21.4418 6.2737 22.1083 6.48706 22.705C6.70041 23.3017 7.26576 23.7 7.89949 23.7H10.2311L11.4232 36.7278C11.5409 38.0149 12.6203 39 13.9128 39H21.5C22.0523 39 22.5 38.5523 22.5 38V28.3153C22.5 27.763 22.9477 27.3153 23.5 27.3153H24.5C25.0523 27.3153 25.5 27.763 25.5 28.3153V38C25.5 38.5523 25.9477 39 26.5 39H34.0874C35.3798 39 36.4592 38.0149 36.577 36.7278L37.7691 23.7H40.1001C40.7338 23.7 41.2992 23.3017 41.5125 22.705C41.7259 22.1082 41.5412 21.4418 41.0511 21.04L24.9505 7.84001Z"
+        ></path>
+    </svg>
+);
+
+const PersonIcon = ({ className, width = '1rem', height = '1rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path d="M18.99 4a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 4a6 6 0 1 0 0 12.01A6 6 0 0 0 19 8ZM18.99 27c2.96 0 5.6.58 7.87 1.65l-3.07 3.06a15.38 15.38 0 0 0-4.8-.71C10.9 31 6.3 36.16 6 44c-.02.55-.46 1-1.02 1h-2c-.55 0-1-.45-.98-1C2.33 33.99 8.7 27 19 27ZM35.7 42.88 31.82 39H45a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H31.82l3.88-3.88a1 1 0 0 0 0-1.41l-1.41-1.42a1 1 0 0 0-1.42 0l-7.3 7.3a2 2 0 0 0 0 2.82l7.3 7.3a1 1 0 0 0 1.42 0l1.41-1.42a1 1 0 0 0 0-1.41Z"></path>
+    </svg>
+);
+
+const LiveIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 32 32"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M7.78511 10.3334C6.95518 10.3334 6.33301 10.9792 6.33301 11.7143V20.2858C6.33301 21.0209 6.95518 21.6667 7.78511 21.6667H18.5744C19.4043 21.6667 20.0265 21.0209 20.0265 20.2858V17.5602C20.0265 17.1826 20.2392 16.8372 20.5763 16.6672C20.9135 16.4973 21.3177 16.5317 21.6212 16.7563L25.6663 19.7488V12.2513L21.6212 15.2439C21.3177 15.4684 20.9135 15.5029 20.5763 15.3329C20.2392 15.1629 20.0265 14.8175 20.0265 14.4399V11.7143C20.0265 10.9792 19.4043 10.3334 18.5744 10.3334H7.78511ZM25.6855 12.2371C25.6831 12.2388 25.6839 12.2383 25.6839 12.2383L25.6855 12.2371ZM25.6716 12.2177C25.673 12.2212 25.6746 12.2243 25.6763 12.2269C25.6798 12.2324 25.6834 12.2355 25.6855 12.2371L25.6874 12.2383C25.6874 12.2383 25.6865 12.238 25.6839 12.2383M4.33301 11.7143C4.33301 9.81952 5.90653 8.33337 7.78511 8.33337H18.5744C20.453 8.33337 22.0265 9.81953 22.0265 11.7143V12.4562L24.4963 10.629C25.0929 10.1877 25.8879 10.1155 26.5542 10.4359C27.224 10.758 27.6663 11.4325 27.6663 12.1905V19.8096C27.6663 20.5676 27.224 21.2421 26.5542 21.5642C25.888 21.8846 25.0929 21.8124 24.4963 21.371L22.0265 19.5439V20.2858C22.0265 22.1806 20.453 23.6667 18.5744 23.6667H7.78511C5.90653 23.6667 4.33301 22.1806 4.33301 20.2858V11.7143Z"
+        ></path>
+    </svg>
+);
+
+export { MessageIcon, UploadIcon, InboxIcon, HomeIcon, PersonIcon, LiveIcon };
+
+export default function Icon({ icon, ...restProps }) {
+    if (!icon) return null;
+    if (typeof icon === 'function') return icon(restProps);
+    if (typeof icon === 'object' && icon.prefix === 'fas' && icon.iconName)
+        return <FontAwesomeIcon icon={icon} {...restProps} />;
+    return null;
+}

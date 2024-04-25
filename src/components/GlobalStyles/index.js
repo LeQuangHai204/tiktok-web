@@ -1,5 +1,14 @@
-import "./GlobalStyles.scss";
+import { Children } from 'react';
+import './GlobalStyles.scss';
+import propTypes from 'prop-types';
 
-export default function GlobalStyles({ children }) {
-    return children;
-}
+const GlobalStyles = ({ children }) => {
+    // only allow one child
+    return Children.only(children);
+};
+
+GlobalStyles.propTypes = {
+    children: propTypes.node.isRequired,
+};
+
+export default GlobalStyles;

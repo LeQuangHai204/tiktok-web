@@ -1,12 +1,16 @@
-import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import classNames from 'classnames/bind';
+import { NavLink } from 'react-router-dom';
+import propTypes from 'prop-types';
 
-import styles from "./Button.module.scss";
+import styles from './Button.module.scss';
+import { Icons } from '~/components';
 
 const cx = classNames.bind(styles);
 
-export default function Button({
+const Button = ({
     className,
+    iconClassName,
+    titleClassName,
     to,
     href,
     type, // primary / outline / basic
@@ -19,8 +23,9 @@ export default function Button({
     children,
     onClick,
     ...rest
-}) {
-    let Component = "button";
+}) => {
+    let Component = 'button';
+    const Icon = Icons.default;
 
     const props = {
         onClick,
@@ -30,8 +35,8 @@ export default function Button({
     if (disabled) {
         Object.keys(props).forEach((element) => {
             if (
-                element.startsWith("on") &&
-                typeof props[element] === "function"
+                element.startsWith('on') &&
+                typeof props[element] === 'function'
             ) {
                 delete props[element];
             }
@@ -40,22 +45,53 @@ export default function Button({
 
     if (to) {
         props.to = to;
-        Component = Link;
+        Component = NavLink;
     } else if (href) {
         props.href = href;
-        Component = "a";
+        Component = 'a';
     }
 
-    const classList = cx("wrapper", className, type, size, shape, {
+    const active = to === window.location.pathname;
+    const classList = cx('wrapper', className, type, size, shape, {
         disabled,
         inline,
+        active,
     });
 
     return (
         <Component className={classList} {...props}>
-            {leftIcon && <span className={cx("icon")}>{leftIcon}</span>}
-            <span className={cx("content")}>{children}</span>
-            {rightIcon && <span className={cx("icon")}>{rightIcon}</span>}
+            <Icon className={cx('icon', iconClassName)} icon={leftIcon} />
+            <span className={cx('content', titleClassName)}>{children}</span>
+            <Icon className={cx('icon', iconClassName)} icon={rightIcon} />
         </Component>
     );
-}
+};
+
+Button.propTypes = {
+    className: propTypes.string,
+    to: propTypes.string,
+    href: propTypes.string,
+    type: propTypes.oneOf(['primary', 'outline', 'basic']),
+    size: propTypes.oneOf(['size-s', 'size-l']),
+    shape: propTypes.oneOf(['rounded']),
+    leftIcon: propTypes.oneOfType([
+        propTypes.func,
+        propTypes.shape({
+            prefix: propTypes.oneOf(['fas']),
+            iconName: propTypes.string.isRequired,
+        }),
+    ]),
+    rightIcon: propTypes.oneOfType([
+        propTypes.func,
+        propTypes.shape({
+            prefix: propTypes.oneOf(['fas']),
+            iconName: propTypes.string.isRequired,
+        }),
+    ]),
+    inline: propTypes.bool,
+    disabled: propTypes.bool,
+    children: propTypes.node.isRequired,
+    onClick: propTypes.func,
+};
+
+export default Button;

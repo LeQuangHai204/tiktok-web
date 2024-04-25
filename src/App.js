@@ -1,11 +1,11 @@
-import { Fragment } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Fragment } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { publicRoutes } from "~/routes";
-import { DefaultLayout } from "~/layouts";
-import "./App.css";
+import { publicRoutes } from '~/routes';
+import { DefaultLayout } from '~/layouts';
+import './App.css';
 
-function App() {
+export default function App() {
     return (
         <BrowserRouter>
             <Routes>
@@ -33,5 +33,3 @@ function App() {
         </BrowserRouter>
     );
 }
-
-export default App;

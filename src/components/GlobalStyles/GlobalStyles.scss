@@ -1,43 +1,5 @@
 @import "normalize.css";
 
-:root {
-    --primary-color: rgba(254, 44, 85, 1);
-    --black-color: black;
-    --white-color: white;
-    --text-color: #333;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-size: 62.5%;
-}
-
-body {
-    font-family: TikTokFont, sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    color: var(--text-color);
-    text-rendering: optimizeSpeed;
-}
-
-button,
-input,
-[tabbindex] {
-    outline: none;
-    border: none;
-    background-color: transparent;
-}
-
-a[href] {
-    color: var(--text-color);
-    text-decoration: none;
-}
-
 // embed fonts
 @font-face {
     font-family: TikTokFont;
@@ -58,6 +20,66 @@ a[href] {
     font-family: TikTokDisplayFont;
     src: url("/assets/fonts/TikTokDisplayFont-Bold.woff2");
     font-weight: 700;
+}
+@font-face {
+    font-family: TikTokDisplayFont;
+    src: url("/assets/fonts/TikTokDisplayFont-Semibold.woff2");
+    font-weight: 700;
+}
+
+// global styles
+:root {
+    --primary-color: rgba(254, 44, 85, 1);
+    --black-color: black;
+    --white-color: white;
+    --text-color: #333;
+    --tiktok-font: TikTokFont, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    font-family: var(--tiktok-font);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabbindex] {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 // custom tippy tooltip

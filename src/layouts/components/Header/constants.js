@@ -2,35 +2,40 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-export const MENU_ITEMS = [
+export const menuItems = [
     {
-        title: "English",
+        title: 'English',
         icon: faEarthAsia,
         childMenu: {
-            title: "Language",
+            title: 'Language',
             data: [
                 {
-                    type: "language",
-                    title: "English",
-                    code: "en",
+                    type: 'language',
+                    title: 'English',
+                    code: 'en',
                 },
                 {
-                    type: "language",
-                    title: "Tiếng Việt",
-                    code: "vie",
+                    type: 'language',
+                    title: 'Tiếng Việt',
+                    code: 'vie',
+                },
+                {
+                    type: 'language',
+                    title: 'English',
+                    code: 'en',
                 },
             ],
         },
     },
     {
-        title: "Feedback and help",
+        title: 'Feedback and help',
         icon: faCircleQuestion,
-        to: "/feedback",
+        to: '/feedback',
     },
     {
-        title: "Keyboard shortcut",
+        title: 'Keyboard shortcut',
         icon: faKeyboard,
     },
 ];

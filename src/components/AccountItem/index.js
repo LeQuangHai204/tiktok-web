@@ -1,37 +1,50 @@
-import classNames from "classnames/bind";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
-import styles from "./AccountItem.module.scss";
-import { images } from "~/assets";
-import Image from "~/components/Image";
+import styles from './AccountItem.module.scss';
+import { images } from '~/assets';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-export default function AccountItem({
+const AccountItem = ({
     userData: { avatar, full_name: fullName, nickname: nickName, tick },
-}) {
+    className,
+}) => {
     return (
-        <Link to={`/@${nickName}`} className={cx("wrapper")}>
+        <Link to={`/@${nickName}`} className={cx('wrapper', className)}>
             <Image
-                className={cx("avatar")}
+                className={cx('avatar')}
                 src={avatar}
                 alt="Loading ..."
                 fallback={images.noImage}
             />
-            <div className={cx("info")}>
-                <h4 className={cx("realname")}>
+            <div className={cx('info')}>
+                <h4 className={cx('realname')}>
                     <span>{fullName}</span>
                     {tick && (
                         <FontAwesomeIcon
-                            className={cx("checked-icon")}
+                            className={cx('checked-icon')}
                             icon={faCheckCircle}
                         ></FontAwesomeIcon>
                     )}
                 </h4>
-                <span className={cx("username")}>{nickName}</span>
+                <span className={cx('username')}>{nickName}</span>
             </div>
         </Link>
     );
-}
+};
+
+AccountItem.propTypes = {
+    userData: propTypes.shape({
+        avatar: propTypes.string,
+        full_name: propTypes.string,
+        nickname: propTypes.string,
+        tick: propTypes.bool,
+    }),
+};
+
+export default AccountItem;

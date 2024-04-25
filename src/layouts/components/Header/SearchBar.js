@@ -1,67 +1,69 @@
-import classNames from "classnames/bind";
-import Tippy from "@tippyjs/react/headless";
-import "tippy.js/dist/tippy.css";
-import { useEffect, useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from 'classnames/bind';
+import Tippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
+import { useEffect, useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
     faSpinner,
     faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import styles from "./Header.module.scss";
-import { AccountItem, Poppers } from "~/components";
+import styles from './Header.module.scss';
+import { AccountItem, Poppers } from '~/components';
+import { useDebounce } from '~/hooks';
+import { fetchUser } from '~/services';
 
 const cx = classNames.bind(styles);
 
-export default function Search() {
-    const [searchInput, setSearchInput] = useState("");
+export default function SearchBar() {
+    const [searchInput, setSearchInput] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const inputRef = useRef();
+    const debouncedSearchInput = useDebounce(searchInput, 600);
 
     useEffect(() => {
-        if (!searchInput.trim()) {
+        // when search input is empty, clear search result
+        if (!debouncedSearchInput.trim()) {
             setSearchResult([]);
             return;
         }
 
         setIsLoading(true);
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                searchInput
-            )}&type=less`
-        )
-            .then((response) => response.json())
+        fetchUser({ params: { q: debouncedSearchInput, type: 'less' } })
             .then((response) => {
                 setSearchResult(response.data);
-                setIsLoading(false);
             })
-            .catch(() => setIsLoading(false));
-    }, [searchInput]);
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, [debouncedSearchInput]);
 
     const handleHideResult = () => {
         setShowResult(false);
     };
 
     return (
+        // using a div to wrap Tippy component to avoid warning
         <div>
             <Tippy
-                Tippy
                 interactive
                 // animation={false}
                 visible={showResult && searchResult.length > 0}
-                // visible
                 placement="bottom"
                 render={(attrs) => (
                     <div
-                        className={cx("search-result")}
+                        className={cx('search-result')}
                         tabIndex="-1"
                         {...attrs}
                     >
                         <Poppers.Wrapper>
-                            <h4 className={cx("search-title")}>Accounts</h4>
+                            <h4 className={cx('search-title')}>Accounts</h4>
                             {searchResult.map((result) => (
                                 <AccountItem
                                     key={result.id}
@@ -73,7 +75,7 @@ export default function Search() {
                 )}
                 onClickOutside={handleHideResult}
             >
-                <div className={cx("search-bar")}>
+                <div className={cx('search-bar')}>
                     <input
                         ref={inputRef}
                         value={searchInput}
@@ -85,9 +87,9 @@ export default function Search() {
                     />
                     {searchInput && !isLoading && (
                         <button
-                            className={cx("clear-btn")}
+                            className={cx('clear-btn')}
                             onClick={() => {
-                                setSearchInput("");
+                                setSearchInput('');
                                 inputRef.current.focus();
                             }}
                         >
@@ -96,11 +98,16 @@ export default function Search() {
                     )}
                     {isLoading && (
                         <FontAwesomeIcon
-                            className={cx("loading-icon")}
+                            className={cx('loading-icon')}
                             icon={faSpinner}
                         />
                     )}
-                    <button className={cx("search-btn")}>
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(ev) => {
+                            ev.preventDefault();
+                        }}
+                    >
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
