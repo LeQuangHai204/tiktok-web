@@ -1,0 +1,156 @@
+.wrapper {
+    width: 100%;
+    padding: 0 3.2rem;
+}
+
+.header {
+    padding: 3.2rem 0;
+    width: 600px;
+}
+
+.info {
+    display: flex;
+
+    .identity {
+        flex-grow: 1;
+        margin-left: 2.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .username {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 38px;
+        margin-bottom: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left;
+        word-break: break-word;
+    }
+
+    .nickname {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        text-overflow: ellipsis;
+        height: 25px;
+        overflow: hidden;
+        max-width: 450px;
+        white-space: nowrap;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .action {
+        display: flex;
+        width: 204px;
+        justify-content: space-between;
+    }
+
+    .message-btn {
+        height: 36px;
+        min-width: 164px;
+        color: rgb(254, 44, 85);
+        border-color: rgb(254, 44, 85);
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .unfollow-btn {
+        height: 36px;
+        color: var(--black-color);
+        border-color: var(--black-color);
+        border-color: rgba(22, 24, 35, 0.12);
+    }
+
+    .edit-btn {
+        display: flex;
+        width: 148px;
+        font-weight: 600;
+    }
+
+    .edit-icon {
+        margin-right: 8px;
+    }
+
+    .share-btn {
+        font-size: 2.4rem;
+        margin-top: 0.4rem;
+    }
+}
+
+.stats {
+    width: 100%;
+    margin-top: 2rem;
+
+    .stat-box + .stat-box {
+        margin-left: 1.6rem;
+    }
+
+    .stat-box .stat-figure:first-child {
+        font-weight: 700;
+        font-size: 1.8rem;
+    }
+
+    .stat-description {
+        color: rgba(22, 24, 35, 0.75);
+    }
+}
+
+.signature {
+    margin-top: 6px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+    gap: 24px 16px;
+
+    .post {
+        position: relative;
+    }
+
+    .video {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 140%;
+    }
+
+    .record {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .views {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+        font-size: 1.6rem;
+    }
+
+    .count {
+        margin: 0 6px;
+    }
+
+    .caption {
+        font-size: 1.6rem;
+        word-break: break-word;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-weight: 600;
+        line-height: 3rem;
+        color: rgb(22, 24, 35);
+        pointer-events: none;
+    }
+}

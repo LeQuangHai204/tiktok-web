@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 
-import { AccountItem, UserTooltip } from '~/components';
-import { fetchUsers } from '~/services';
+import { Account, UserTooltip } from '~/templates';
+import { searchUser } from '~/services';
 
 import styles from './Sidebar.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function UserMenu({ label }) {
+export default function UserMenu({ label, preview }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetchUsers({ q: 'ng hoa', type: 'less' })
+        searchUser({ q: 'ng hoa', type: 'less' })
             .then((response) => {
                 setUsers(response);
             })
@@ -22,24 +22,40 @@ export default function UserMenu({ label }) {
             });
     }, []);
 
+    if (!preview) {
+        return (
+            <div className={cx('user-menu')}>
+                <div className={cx('menu-label')}>{label}</div>
+                {users.map((user, index) => (
+                    <Account
+                        key={index}
+                        className={cx('menu-item')}
+                        userData={user}
+                    />
+                ))}
+            </div>
+        );
+    }
+
     return (
         <div className={cx('user-menu')}>
             <div className={cx('menu-label')}>{label}</div>
-
             {users.map((user, index) => (
-                <div key={index}>
+                <div key={index} className={cx('menu-content')}>
                     <Tippy
                         interactive
                         animation={false}
                         delay={[600, 400]}
                         placement="bottom"
-                        render={(attrs) => UserTooltip({ attrs, user })}
+                        render={(attrs) => (
+                            <UserTooltip attrs={attrs} user={user} />
+                        )}
                     >
                         <div>
-                            <AccountItem
+                            <Account
                                 className={cx('menu-item')}
                                 userData={user}
-                            ></AccountItem>
+                            />
                         </div>
                     </Tippy>
                 </div>

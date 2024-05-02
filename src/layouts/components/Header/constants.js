@@ -2,9 +2,16 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
+    faBookmark,
+    faCoins,
+    faGear,
+    faRightToBracket,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const menuItems = [
+import { Icons } from '~/components';
+
+export const dropdownItems = [
     {
         title: 'English',
         icon: faEarthAsia,
@@ -37,5 +44,48 @@ export const menuItems = [
     {
         title: 'Keyboard shortcut',
         icon: faKeyboard,
+    },
+];
+
+export const navItems = [
+    {
+        content: 'Upload',
+        Icon: Icons.Upload,
+    },
+    {
+        content: 'Message',
+        Icon: Icons.Message,
+    },
+    {
+        content: 'Inbox',
+        Icon: Icons.Inbox,
+    },
+];
+
+export const userMenu = [
+    {
+        title: 'View profile',
+        icon: faUser,
+        to: '/@Quỳnh Trâm',
+    },
+    {
+        title: 'Favorite',
+        icon: faBookmark,
+    },
+    {
+        title: 'Get coin',
+        icon: faCoins,
+        to: '/coin',
+    },
+    {
+        title: 'Settings',
+        icon: faGear,
+        to: '/settings',
+    },
+    ...dropdownItems,
+    {
+        title: 'Log out',
+        icon: faRightToBracket,
+        separate: true,
     },
 ];

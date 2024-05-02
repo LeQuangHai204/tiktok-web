@@ -1,4 +1,3 @@
-import propTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
 import { Button } from '~/components';

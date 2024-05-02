@@ -1,0 +1,75 @@
+{
+    "data": {
+        "code": 0,
+        "msg": "success",
+        "processed_time": 0.7995,
+        "data": {
+            "user": {
+                "id": "7120607853731562498",
+                "uniqueId": "quynhtram.9204",
+                "nickname": "Quỳnh Trâm",
+                "avatarThumb": "https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/707f82c3cc3e0c6bb5a8c2cef7402ce6.webp?lk3s=a5d48078&x-expires=1714658400&x-signature=0bau9E8QcDn%2BNtfqJ%2BUa6NJv440%3D",
+                "avatarMedium": "https://p9-sign-sg.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/707f82c3cc3e0c6bb5a8c2cef7402ce6.webp?lk3s=a5d48078&x-expires=1714658400&x-signature=JsO1QYeJhy711NlEPfQ9jYX0I1Y%3D",
+                "avatarLarger": "https://p9-sign-sg.tiktokcdn.com/aweme/1080x1080/tos-alisg-avt-0068/707f82c3cc3e0c6bb5a8c2cef7402ce6.webp?lk3s=a5d48078&x-expires=1714658400&x-signature=Q61V9Q6CCWRIdK0Oo9hxOFlZIyY%3D",
+                "signature": "Thật hoan hỉ khi chúng ta thấy nhau 🌷✨",
+                "verified": false,
+                "secUid": "MS4wLjABAAAAgIwRUk6KWvJ8dKf-_d8pDXDaBBYnd0Wg3lFOndPjKMDrAgBYfXlPUNhtO8NrVpBv",
+                "secret": false,
+                "ftc": false,
+                "relation": 0,
+                "openFavorite": false,
+                "commentSetting": null,
+                "duetSetting": null,
+                "stitchSetting": null,
+                "privateAccount": false,
+                "isADVirtual": false,
+                "isUnderAge18": false,
+                "ins_id": "",
+                "twitter_id": "",
+                "youtube_channel_title": "",
+                "youtube_channel_id": ""
+            },
+            "stats": {
+                "followingCount": 27,
+                "followerCount": 103,
+                "heartCount": 907,
+                "videoCount": 14,
+                "diggCount": 0,
+                "heart": 907
+            }
+        }
+    },
+    "status": 200,
+    "statusText": "",
+    "headers": {
+        "content-type": "application/json"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "adapter": ["xhr", "http"],
+        "transformRequest": [null],
+        "transformResponse": [null],
+        "timeout": 5000,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "X-RapidAPI-Key": "37fdbc3c20msh1423550fba2ae87p1c4b83jsn0fd6920000ee",
+            "X-RapidAPI-Host": "tiktok-scraper7.p.rapidapi.com"
+        },
+        "baseURL": "https://tiktok-scraper7.p.rapidapi.com",
+        "params": {
+            "user_id": "7120607853731562498"
+        },
+        "method": "get",
+        "url": "/user/info"
+    },
+    "request": {}
+}

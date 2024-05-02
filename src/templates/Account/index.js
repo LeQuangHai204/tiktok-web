@@ -4,27 +4,29 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import styles from './AccountItem.module.scss';
 import { images } from '~/assets';
-import Image from '~/components/Image';
+import { Avatar } from '~/components';
+
+import styles from './Account.module.scss';
 
 const cx = classNames.bind(styles);
 
-const AccountItem = ({
+const Account = ({
     userData: { avatar, full_name: fullName, nickname: nickName, tick },
     className,
 }) => {
     return (
         <Link to={`/@${nickName}`} className={cx('wrapper', className)}>
-            <Image
+            <Avatar
                 className={cx('avatar')}
                 src={avatar}
                 alt="Loading ..."
+                size={40}
                 fallback={images.noImage}
             />
             <div className={cx('info')}>
                 <div className={cx('realname')}>
-                    <span className={cx('fullname')}>{fullName}</span>
+                    <h4 className={cx('fullname')}>{fullName}</h4>
                     {tick && (
                         <FontAwesomeIcon
                             className={cx('checked-icon')}
@@ -38,7 +40,7 @@ const AccountItem = ({
     );
 };
 
-AccountItem.propTypes = {
+Account.propTypes = {
     userData: propTypes.shape({
         avatar: propTypes.string,
         full_name: propTypes.string,
@@ -47,4 +49,4 @@ AccountItem.propTypes = {
     }),
 };
 
-export default AccountItem;
+export default Account;

@@ -1,73 +1,43 @@
-import {
-    faBookmark,
-    faCoins,
-    faEllipsisVertical,
-    faGear,
-    faRightToBracket,
-    faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import 'tippy.js/dist/tippy.css';
 
 import { images } from '~/assets';
-import { Image, Poppers } from '~/components';
+import { Avatar, Poppers, Button } from '~/components';
 
 import styles from './Header.module.scss';
-import { menuItems } from './constants';
+import { dropdownItems, userMenu } from './constants';
 
 const cx = classNames.bind(styles);
 
-const DropDown = ({ currentUser }) => {
-    const userMenu = [
-        {
-            title: 'View profile',
-            icon: faUser,
-            to: '/hailq',
-        },
-        {
-            title: 'Favorite',
-            icon: faBookmark,
-        },
-        {
-            title: 'Get coin',
-            icon: faCoins,
-            to: '/coin',
-        },
-        {
-            title: 'Settings',
-            icon: faGear,
-            to: '/settings',
-        },
-        ...menuItems,
-        {
-            title: 'Log out',
-            icon: faRightToBracket,
-            separate: true,
-        },
-    ];
-
-    const handleMenuItemClick = (menuItem) => {};
+const Dropdown = ({ user }) => {
+    const navigate = useNavigate();
 
     return (
         <Poppers.Menu
-            data={currentUser ? userMenu : menuItems}
-            onItemClick={handleMenuItemClick}
+            data={user ? userMenu : dropdownItems}
+            onItemClick={(item) => navigate(item.to)}
         >
-            {currentUser ? (
-                <Image
-                    className={cx('avatar')}
-                    src={images.pic1}
-                    alt="Loading ..."
-                    fallback={images.noImage}
-                />
-            ) : (
-                <button className={cx('more-btn')}>
-                    <FontAwesomeIcon icon={faEllipsisVertical} />
-                </button>
-            )}
+            {/* a redundant div is put here to avoid a warning */}
+            <div className={cx('avatar')}>
+                {user ? (
+                    <Avatar
+                        key={user.id}
+                        src={images.pic1}
+                        alt="Loading ..."
+                        fallback={images.noImage}
+                        size={40}
+                    />
+                ) : (
+                    <Button className={cx('more-btn')}>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </Button>
+                )}
+            </div>
         </Poppers.Menu>
     );
 };
 
-export default DropDown;
+export default Dropdown;

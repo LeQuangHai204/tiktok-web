@@ -15,11 +15,13 @@ const Button = ({
     href,
     type, // primary / outline / basic
     size, // size-s / size-l
+    fontWeight = 'regular', // normal / bold
     shape, // rounded
     leftIcon,
     rightIcon,
     inline,
     disabled,
+    blurred,
     children,
     onClick,
     ...rest
@@ -28,10 +30,10 @@ const Button = ({
     const Icon = Icons.default;
 
     const props = {
-        onClick,
         ...rest,
     };
 
+    // Remove all event listeners if the button is disabled
     if (disabled) {
         Object.keys(props).forEach((element) => {
             if (
@@ -49,11 +51,15 @@ const Button = ({
     } else if (href) {
         props.href = href;
         Component = 'a';
+    } else {
+        props.onClick = onClick;
+        Component = 'button';
     }
 
     const active = to === window.location.pathname;
-    const classList = cx('wrapper', className, type, size, shape, {
+    const classList = cx('wrapper', className, type, size, shape, fontWeight, {
         disabled,
+        blurred,
         inline,
         active,
     });
@@ -72,8 +78,9 @@ Button.propTypes = {
     to: propTypes.string,
     href: propTypes.string,
     type: propTypes.oneOf(['primary', 'outline', 'basic']),
-    size: propTypes.oneOf(['size-s', 'size-l']),
+    size: propTypes.oneOf(['size-s', 'size-l', 'size-xs']),
     shape: propTypes.oneOf(['rounded']),
+    fontWeight: propTypes.oneOf(['normal', 'bold']),
     leftIcon: propTypes.oneOfType([
         propTypes.func,
         propTypes.shape({

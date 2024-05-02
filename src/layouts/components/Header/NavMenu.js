@@ -2,59 +2,42 @@ import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import 'tippy.js/dist/tippy.css';
 
-import { Button, Icons } from '~/components';
+import { Button } from '~/components';
+
 import styles from './Header.module.scss';
+import { navItems } from './constants';
 
 const cx = classNames.bind(styles);
 
-export default function NavMenu({ currentUser }) {
+export default function NavMenu({ user }) {
+    if (!user)
+        return (
+            <>
+                <Button type="basic" inline>
+                    Upload
+                </Button>
+                <Button type="primary" inline>
+                    Log in
+                </Button>
+            </>
+        );
+
     return (
         <>
-            {currentUser ? (
-                <>
-                    <Tippy content="Upload" delay={[0, 100]} placement="bottom">
-                        <button className={cx('action-btn')}>
-                            <Icons.UploadIcon />
-                        </button>
-                    </Tippy>
-                    <Tippy
-                        content="Message"
-                        delay={[0, 100]}
-                        placement="bottom"
-                    >
-                        <button className={cx('action-btn')}>
-                            <Icons.MessageIcon />
-                        </button>
-                    </Tippy>
-                    <Tippy content="Inbox" delay={[0, 100]} placement="bottom">
-                        <button className={cx('action-btn')}>
-                            <Icons.InboxIcon />
-                            <sup className={cx('inbox-count')}>13</sup>
-                        </button>
-                    </Tippy>
-                </>
-            ) : (
-                <>
-                    <Button type="basic" inline>
-                        Upload
-                    </Button>
-                    <Button
-                        type="primary"
-                        // leftIcon={
-                        //     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        // }
-                        // rightIcon={
-                        //     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        // }
-                        inline
-                        onClick={() => {
-                            alert('You clicked log in button');
-                        }}
-                    >
-                        Log in
-                    </Button>
-                </>
-            )}
+            {navItems.map(({ content, Icon, ...props }, index) => (
+                <Tippy
+                    key={index}
+                    content={content}
+                    delay={[0, 100]}
+                    placement="bottom"
+                >
+                    <div>
+                        <Button className={cx('action-btn')} size="size-xs">
+                            <Icon {...props} />
+                        </Button>
+                    </div>
+                </Tippy>
+            ))}
         </>
     );
 }

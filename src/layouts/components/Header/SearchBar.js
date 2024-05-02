@@ -9,14 +9,16 @@ import {
     faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 
-import styles from './Header.module.scss';
-import { AccountItem, Poppers } from '~/components';
+import { Poppers } from '~/components';
 import { useDebounce } from '~/hooks';
-import { fetchUsers } from '~/services';
+import { searchUser } from '~/services';
+import { Account } from '~/templates';
+
+import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function SearchBar() {
+const SearchBar = () => {
     const [searchInput, setSearchInput] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(false);
@@ -32,7 +34,7 @@ export default function SearchBar() {
         }
 
         setIsLoading(true);
-        fetchUsers({ q: 'ng hoa', type: 'less' })
+        searchUser({ q: 'ng hoa', type: 'less' })
             .then((response) => {
                 setSearchResult(response);
             })
@@ -65,7 +67,7 @@ export default function SearchBar() {
                         <Poppers.Wrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
                             {searchResult.map((result, index) => (
-                                <AccountItem key={index} userData={result} />
+                                <Account key={index} userData={result} />
                             ))}
                         </Poppers.Wrapper>
                     </div>
@@ -111,4 +113,6 @@ export default function SearchBar() {
             </Tippy>
         </div>
     );
-}
+};
+
+export default SearchBar;

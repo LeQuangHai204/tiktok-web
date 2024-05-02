@@ -4,29 +4,30 @@ import { Link } from 'react-router-dom';
 
 import { images } from '~/assets';
 import { paths } from '~/routes';
+import { Image } from '~/components';
 
 import styles from './Header.module.scss';
 import SearchBar from './SearchBar';
 import NavMenu from './NavMenu';
-import DropDown from './DropDown';
+import Dropdown from './Dropdown';
 
 const cx = classNames.bind(styles);
 
 export default function Header() {
-    const currentUser = true;
+    const user = true;
 
     return (
-        <header className={cx('wrapper')}>
+        <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <Link to={paths.home} className={cx('logo')}>
-                    <img src={images.logo} alt="TikTok" />
+                    <Image src={images.logo} alt="TikTok" />
                 </Link>
                 <SearchBar />
                 <div className={cx('actions')}>
-                    <NavMenu currentUser />
-                    <DropDown currentUser />
+                    <NavMenu user={user} />
+                    <Dropdown user={user} />
                 </div>
             </div>
-        </header>
+        </div>
     );
 }

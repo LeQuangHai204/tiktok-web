@@ -3,8 +3,7 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import propTypes from 'prop-types';
 
-import { Wrapper } from '~/components/Poppers';
-import Button from '~/components/Button';
+import { Poppers, Button } from '~/components';
 
 import styles from './Menu.module.scss';
 import Header from './Header';
@@ -41,30 +40,6 @@ const Menu = ({
     // navigate to main menu by removing all menus except first one
     const handleReset = () => setMenuStack(menuStack.slice(0, 1));
 
-    // navigate to selected menu by adding it to end of stack
-    const handleRender = (attrs) => (
-        <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
-            <Wrapper className={cx('inner')}>
-                {menuStack.length > 1 && (
-                    <Header
-                        title={currentMenu.title ?? 'Go back'}
-                        onBack={handleBack}
-                    />
-                )}
-                {currentMenu.data.map((item, index) => (
-                    <Button
-                        key={index}
-                        className={cx('menu-item')}
-                        leftIcon={item.icon}
-                        onClick={() => handleClick(item)}
-                    >
-                        {item.title}
-                    </Button>
-                ))}
-            </Wrapper>
-        </div>
-    );
-
     return (
         <Tippy
             {...restProps}
@@ -76,7 +51,29 @@ const Menu = ({
             hideOnClick={hideOnClick}
             placement="bottom-end"
             onHide={handleReset}
-            render={handleRender}
+            render={(attrs) => (
+                // navigate to selected menu by adding it to end of stack
+                <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
+                    <Poppers.Wrapper className={cx('inner')}>
+                        {menuStack.length > 1 && (
+                            <Header
+                                title={currentMenu.title ?? 'Go back'}
+                                onBack={handleBack}
+                            />
+                        )}
+                        {currentMenu.data.map((item, index) => (
+                            <Button
+                                key={index}
+                                className={cx('menu-item')}
+                                leftIcon={item.icon}
+                                onClick={() => handleClick(item)}
+                            >
+                                {item.title}
+                            </Button>
+                        ))}
+                    </Poppers.Wrapper>
+                </div>
+            )}
         >
             {children}
         </Tippy>

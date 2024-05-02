@@ -3,8 +3,7 @@
 }
 
 .nav-menu {
-    margin-left: 10px;
-    margin-top: 8px;
+    margin: 8px 0 0 8px;
 
     .menu-item {
         display: flex;
@@ -30,10 +29,6 @@
         width: 24px;
         height: 24px;
         margin-right: 16px;
-    }
-
-    .menu-title {
-        margin-left: 16px;
     }
 }
 

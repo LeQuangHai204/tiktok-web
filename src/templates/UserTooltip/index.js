@@ -22,7 +22,8 @@ const UserTooltip = ({ attrs, user }) => {
                 />
                 <Button
                     className={cx('follow-btn')}
-                    type={'primary'}
+                    type="primary"
+                    size="size-s"
                     to={`/@${user.id}/follow`}
                 >
                     Follow
@@ -50,14 +51,14 @@ const UserTooltip = ({ attrs, user }) => {
     );
 };
 
-// UserTooltip.propTypes = {
-//     attrs: propTypes.object,
-//     user: propTypes.shape({
-//         avatar: propTypes.string,
-//         full_name: propTypes.string,
-//         nickname: propTypes.string,
-//         tick: propTypes.bool,
-//     }),
-// };
+UserTooltip.propTypes = {
+    attrs: propTypes.object,
+    user: propTypes.shape({
+        avatar: propTypes.string,
+        full_name: propTypes.string,
+        nickname: propTypes.string,
+        tick: propTypes.bool,
+    }),
+};
 
 export default UserTooltip;

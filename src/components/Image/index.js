@@ -11,6 +11,8 @@ const Image = forwardRef(
             className,
             src,
             alt,
+            width,
+            height,
             fallback: customFallback = images.noImage,
             ...props
         },
@@ -25,6 +27,8 @@ const Image = forwardRef(
                 className={classNames(styles.wrapper, className)}
                 src={fallback || (src ?? '')}
                 alt={alt}
+                width={width}
+                height={height}
                 {...props}
                 onError={handleError}
             />

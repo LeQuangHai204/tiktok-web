@@ -4,17 +4,17 @@ import { paths } from '~/routes';
 export const menuItems = [
     {
         title: 'Home',
-        icon: Icons.HomeIcon,
+        icon: Icons.Home,
         to: paths.home,
     },
     {
         title: 'Following',
-        icon: Icons.PersonIcon,
+        icon: Icons.Person,
         to: paths.following,
     },
     {
         title: 'Live',
-        icon: Icons.LiveIcon,
+        icon: Icons.Live,
         to: paths.live,
     },
 ];

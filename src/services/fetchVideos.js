@@ -1,17 +1,27 @@
 import { rapidApi } from '~/utils';
 
-export default function fetchVideos(params) {
-    // rapidApi
-    //     .request({
-    //         method: 'GET',
-    //         url: '/feed/search',
-    //         params,
-    //     })
-    //     .then((response) => {
-    //         console.log('Video', response);
-    //         return response.data;
-    //     });
-}
+export default async function fetchVideos(
+    params = {
+        user_id: '7120607853731562498',
+        count: '9',
+        cursor: '0',
+    }
+) {
+    return new Promise((resolve) => {
+        resolve(require('~/assets/apis/posts.json').data.data.videos);
+    });
 
-// for more api information, please visit
-// https://rapidapi.com/tikwm-tikwm-default/api/tiktok-scraper7/
+    try {
+        const response = await rapidApi.get('/user/posts', {
+            params,
+        });
+        console.log('API:', response);
+        return response.data.data.videos;
+    } catch (error) {
+        setTimeout(() => {
+            console.log('Error', error);
+            const response = require('~/assets/apis/posts.json');
+            return response.data.data.videos;
+        }, 1000);
+    }
+}
