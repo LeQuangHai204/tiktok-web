@@ -16,20 +16,11 @@ const Dropdown = ({ user }) => {
     const navigate = useNavigate();
 
     return (
-        <Poppers.Menu
-            data={user ? userMenu : dropdownItems}
-            onItemClick={(item) => navigate(item.to)}
-        >
+        <Poppers.Menu data={user ? userMenu : dropdownItems} onItemClick={(item) => navigate(item.to)}>
             {/* a redundant div is put here to avoid a warning */}
             <div className={cx('avatar')}>
                 {user ? (
-                    <Avatar
-                        key={user.id}
-                        src={images.pic1}
-                        alt="Loading ..."
-                        fallback={images.noImage}
-                        size={40}
-                    />
+                    <Avatar key={user.id} src={images.pic1} alt="Loading ..." fallback={images.noImage} size={40} />
                 ) : (
                     <Button className={cx('more-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical} />
